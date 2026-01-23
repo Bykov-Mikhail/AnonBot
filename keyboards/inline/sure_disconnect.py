@@ -1,6 +1,6 @@
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 from loader import bot
-from database.chat_base import disconnect_user, get_partner, is_user_in_chat, is_user_waiting, add_to_waiting, get_one_waiting_user, connect_pair
+from database.chat_base import disconnect_user, get_partner, is_user_in_chat, is_user_waiting, add_to_waiting, get_one_waiting_user, connect_pair, add_past_partners
 
 def sure_disconnect():
     button_no = InlineKeyboardButton(text='Нет', callback_data='No')
@@ -19,20 +19,20 @@ def handle_disconnect_confirmation(call):
 
     elif call.data == 'Sure':
         disconnect_user(user_id)
+        add_past_partners(user_id, partner)
+        add_past_partners(partner, user_id)
         bot.delete_message(call.message.chat.id, call.message.message_id)
-        bot.send_message(user_id, "Ты отключился от собеседника")
-        bot.send_message(partner, "Собеседник отключился")
+        bot.send_message(user_id, "Ты отключился от собеседника 👌")
+        bot.send_message(partner, "Собеседник отключился 😮‍💨")
 
-    if is_user_in_chat(user_id):
-        # Теоретически не должно быть, но на всякий случай
-        bot.send_message(user_id, "Ошибка: всё ещё в чате.", reply_markup=sure_disconnect())
     elif is_user_waiting(user_id):
-        bot.send_message(user_id, "Ты уже в поиске.")
+        bot.send_message(user_id, "Ты уже в поиске. 🤨🤨")
     else:
         add_to_waiting(user_id)
-        bot.send_message(user_id, "Ищем нового собеседника...")
-        partner = get_one_waiting_user(user_id)
+        get_one_waiting_user(user_id)
+        bot.send_message(user_id, "🔍 Ищем нового собеседника...")
+        partner = get_partner(user_id)
         if partner is not None:
             connect_pair(user_id, partner)
-            bot.send_message(user_id, "Собеседник найден! Пиши скорее.")
-            bot.send_message(partner, "Собеседник найден! Пиши скорее.")
+            bot.send_message(user_id, "😱😱 Собеседник найден! Пиши скорее.")
+            bot.send_message(partner, "😱😱 Собеседник найден! Пиши скорее.")

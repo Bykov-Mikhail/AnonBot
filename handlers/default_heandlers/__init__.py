@@ -2,6 +2,9 @@ from . import start
 from . import help
 from . import find
 from . import stop
+from . import answer_captcha
+from . import feedback
 from . import forward_message
 
-__all__ = ['start', 'help', 'find', 'stop', 'forward_message']
+
+__all__ = ['start', 'help', 'find', 'stop', 'forward_message', 'feedback', 'answer_captcha']
