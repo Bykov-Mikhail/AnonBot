@@ -38,6 +38,6 @@ def handle_captcha(message):
             bot.send_message(user_id, "Ну все, ты в бане. 💀"
                                       "Для разбана пиши на эту почту diskoviya@mail.ru 🙉")
     else:
-        bot.send_message(user_id, "Ты справился! 🤓")
+        bot.send_message(user_id, "Ты молодец! 🤓")
         user_states.pop(user_id, None)
         return

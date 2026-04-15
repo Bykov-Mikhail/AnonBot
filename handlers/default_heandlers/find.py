@@ -13,11 +13,11 @@ def in_find(message):
     ban_list = get_banlist()
 
     if user_id in ban_list:
-        bot.send_message(user_id, "Ты забанен!")
+        bot.send_message(user_id, "Ты в бане!")
         return
 
     if is_user_in_chat(user_id):
-        bot.send_message(user_id, "Ты уверен что хочешь найти нового собеседника? 🤔", reply_markup=sure_disconnect())
+        bot.send_message(user_id, "Ты точно хочешь найти нового собеседника? 🤔", reply_markup=sure_disconnect())
         return
     if is_user_waiting(user_id):
         bot.send_message(user_id, "Ты уже в поиске 🤨🤨")

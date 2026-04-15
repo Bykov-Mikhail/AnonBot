@@ -9,14 +9,14 @@ def stop_function(message):
 
     if is_user_waiting(user_id):
         remove_from_waiting(user_id)
-        bot.send_message(user_id, "Ты вышел из поиска 😰")
+        bot.send_message(user_id, "Ты больше не в поиске 😰")
 
     if is_user_in_chat(user_id):
         partner = get_partner(user_id)
         disconnect_user(user_id)
         add_past_partners(user_id, partner)
         add_past_partners(partner, user_id)
-        bot.send_message(user_id, "Ты отключился от собеседника 👌")
+        bot.send_message(user_id, "Связь с собеседником прервана 👌")
         bot.send_message(partner, "Собеседник отключился 😮‍💨")
 
         quantity = add_quantity_chat(user_id)
