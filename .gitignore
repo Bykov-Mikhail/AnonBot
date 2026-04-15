@@ -201,6 +201,13 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
+# Базы данных и файлы с данными
+*.db
+*.sqlite
+*.sqlite3
+database/**/*.db
+data/
+
 # Marimo
 marimo/_static/
 marimo/_lsp/
