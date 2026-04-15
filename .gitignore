@@ -208,6 +208,11 @@ cython_debug/
 database/**/*.db
 data/
 
+# SQLite temporary files
+*.db-shm
+*.db-wal
+*-journal
+
 # Marimo
 marimo/_static/
 marimo/_lsp/
