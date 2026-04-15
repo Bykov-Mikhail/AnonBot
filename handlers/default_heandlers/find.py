@@ -16,6 +16,7 @@ def in_find(message):
         bot.send_message(user_id, "Ты в бане!")
         return
 
+
     if is_user_in_chat(user_id):
         bot.send_message(user_id, "Ты точно хочешь найти нового собеседника? 🤔", reply_markup=sure_disconnect())
         return
